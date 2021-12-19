@@ -1,4 +1,4 @@
-#!/bin/env sh
+#!/bin/env bash
 
 echo "$(whoami)"; [ "$UID" = "0" ] || exec sudo "$0" "$@"
 
