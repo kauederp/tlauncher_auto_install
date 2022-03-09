@@ -1,8 +1,13 @@
 # tlauncher_auto_install
-Tlauncher auto installer script for linux users.
+Tlauncher auto installer script for **ALL** linux users.
 
-**Project link: https://tlauncher.org/**
+**Original project link: https://tlauncher.org/**
 
+
+## Requirements
+* unzip
+* wget
+* tput
 
 # Instructions
 
@@ -12,6 +17,8 @@ Tlauncher auto installer script for linux users.
 
 > chmod +x ./install.sh && ./install.sh
 
-<h3> Or </h3>
+## Or
 
-> git clone https://github.com/kauederp/tlauncher_auto_install.git" ; cd tlauncher_auto_install/ ; chmod +x ./install.sh && ./install.sh
+All in one line:
+
+> git clone https://github.com/kauederp/tlauncher_auto_install.git ; cd tlauncher_auto_install/ ; chmod +x ./install.sh && ./install.sh
