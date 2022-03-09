@@ -1,16 +1,22 @@
 #!/bin/env bash
 
-URL="http://repo.tlauncher.org/update/lch/TLauncher-2.841.jar"
+ZIP="/tmp/jar"
+URL="https://tlauncher.org/jar"
 INST_PATH="/opt/Tlauncher"
 EXEC_PATH="/usr/local/bin"
 
 
 echo "$(whoami)"; [ "$UID" = "0" ] || exec sudo "$0" "$@"
+rm -f /tmp/jar
+rm -rf ${INST_PATH}
 
-mkdir -p /opt/Tlauncher
-wget  $URL -O ${INST_PATH}/tlauncher.jar
+mkdir -p ${INST_PATH}
+wget ${URL} -P /tmp 
+unzip ${ZIP} -d ${INST_PATH}
+mv ${INST_PATH}/TLauncher-* ${INST_PATH}/tlauncher.jar
+cp $0 $EXEC_PATH/tlauncher-update
 
-if test -f "/opt/Tlauncher/tlauncher.jar" ; then
+if test -f "${INST_PATH}/tlauncher.jar" ; then
   echo "#!/bin/env sh" > $EXEC_PATH/tlauncher
   echo "java -jar ${INST_PATH}/tlauncher.jar" > $EXEC_PATH/tlauncher
   chmod +x $EXEC_PATH/tlauncher
@@ -23,11 +29,6 @@ if test -f "/opt/Tlauncher/tlauncher.jar" ; then
   Categories=Game;
   Exec='${EXEC_PATH}'/tlauncher
   Icon=minecraft' > /usr/share/applications/TLauncher.desktop
-
-
-
-
-
   echo "$(tput bold setaf 2)successfully installed."
   echo "$(tput sgr0)"
 
