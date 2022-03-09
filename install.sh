@@ -8,7 +8,7 @@ EXEC_PATH="/usr/local/bin"
 echo "$(whoami)"; [ "$UID" = "0" ] || exec sudo "$0" "$@"
 
 mkdir -p /opt/Tlauncher
-wget  $URL -O /tlauncher.jar
+wget  $URL -O ${INST_PATH}/tlauncher.jar
 
 if test -f "/opt/Tlauncher/tlauncher.jar" ; then
   echo "#!/bin/env sh" > $EXEC_PATH/tlauncher
@@ -32,7 +32,7 @@ if test -f "/opt/Tlauncher/tlauncher.jar" ; then
   echo "$(tput sgr0)"
 
 else
-  tput 1;
+  tput setaf 1;
   echo "ERROR:$(tput sgr0) could not perform the installation. The link may be broken."
 fi
 
